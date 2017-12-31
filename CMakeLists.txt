@@ -4,8 +4,14 @@ project(alohalytics C CXX)
 
 set(CMAKE_CXX_STANDART 11)
 
+enable_testing()
+
+get_filename_component(ALOHA_ROOT . ABSOLUTE)
+
 find_package(Threads REQUIRED)
 find_package(ZLIB REQUIRED)
+
+add_subdirectory(tests)
 
 set(
   SRC
