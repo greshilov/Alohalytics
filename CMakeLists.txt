@@ -3,14 +3,19 @@ cmake_minimum_required(VERSION 3.2)
 project(alohalytics C CXX)
 
 set(CMAKE_CXX_STANDART 11)
+set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
 
+# Usage:
+# make test ARGS="-V"
 enable_testing()
 
 get_filename_component(ALOHA_ROOT . ABSOLUTE)
 
 find_package(Threads REQUIRED)
 find_package(ZLIB REQUIRED)
+find_package(FCGI REQUIRED)
 
+add_subdirectory(server)
 add_subdirectory(tests)
 
 set(
