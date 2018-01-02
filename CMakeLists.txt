@@ -13,10 +13,15 @@ get_filename_component(ALOHA_ROOT . ABSOLUTE)
 
 find_package(Threads REQUIRED)
 find_package(ZLIB REQUIRED)
-find_package(FCGI REQUIRED)
 
-add_subdirectory(server)
-add_subdirectory(tests)
+include_directories(${ALOHA_ROOT})
+
+if(NOT ANDROID)
+  add_subdirectory(examples/cpp)
+  add_subdirectory(examples/server)
+  add_subdirectory(server)
+  add_subdirectory(tests)
+endif()
 
 set(
   SRC
@@ -40,6 +45,11 @@ if (UNIX)
   )
 endif()
 
-add_executable(${PROJECT_NAME} ${SRC} ${PLATFORM_SRC})
+if (ANDROID)
+  add_subdirectory(src/android)
+endif()
 
-target_link_libraries(${PROJECT_NAME} ZLIB::ZLIB Threads::Threads)
+if(NOT ANDROID)
+  add_executable(${PROJECT_NAME} ${SRC} ${PLATFORM_SRC})
+  target_link_libraries(${PROJECT_NAME} ZLIB::ZLIB Threads::Threads)
+endif()
