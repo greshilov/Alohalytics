@@ -1,4 +1,10 @@
-project(alohalytics)
+cmake_minimum_required(VERSION 3.2)
+
+project(alohalytics C CXX)
+
+get_filename_component(ALOHA_ROOT ../../ ABSOLUTE)
+
+include_directories(${ALOHA_ROOT})
 
 set(
   SRC

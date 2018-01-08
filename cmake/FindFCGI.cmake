@@ -1,10 +1,12 @@
 # Created by Viacheslav Greshilov http://github.com/greshilov
 
+file(GLOB _BREW_FCGI "/usr/local/Cellar/fcgi/*")
+
 set(
   _FCGI_SOURCE_PATHS
   /usr/
   /usr/local/
-  /usr/local/Cellar/fcgi/2.4.0/
+  ${_BREW_FCGI}
 )
 
 find_path(
