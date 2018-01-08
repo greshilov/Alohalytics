@@ -45,11 +45,7 @@ set(
   src/posix/file_manager_posix_impl.cc
 )
 
-<<<<<<< HEAD
-if(LINUX)
-=======
 if(UNIX AND NOT APPLE)
->>>>>>> 03a3497... Apple support added
   add_executable(
     ${PROJECT_NAME}
     ${SRC}
